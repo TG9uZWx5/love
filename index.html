@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>LEVEL UP - Endlich & Ahtohallan</title>
+    <style>
+        :root {
+            --blue: #8BC7D8;
+            --pink: #FFB7C5;
+            --border: rgba(0,0,0,0.1);
+        }
+
+        body {
+            margin: 0;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(165deg, #F8F9FA 50%, #FFF0F3 50%);
+            font-family: system-ui, sans-serif;
+        }
+
+        .id-card {
+            width: 320px;
+            background: white;
+            border-radius: 16px;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.12);
+            overflow: hidden;
+        }
+
+        .header {
+            background: var(--blue);
+            padding: 1.5rem;
+            text-align: center;
+            color: white;
+            position: relative;
+        }
+
+        .header::after {
+            content: '';
+            position: absolute;
+            bottom: -20px;
+            left: 50%;
+            width: 40px;
+            height: 40px;
+            background: var(--blue);
+            transform: translateX(-50%) rotate(45deg);
+        }
+
+        .avatar-pair {
+            display: flex;
+            justify-content: center;
+            margin: 2rem 0;
+        }
+
+        .avatar {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            border: 3px solid white;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+
+        .avatar:first-child {
+            transform: translateX(10px);
+            z-index: 1;
+        }
+
+        .avatar:last-child {
+            transform: translateX(-10px);
+        }
+
+        .avatar:hover {
+            transform: translateX(0) scale(1.1);
+        }
+
+        .stats {
+            padding: 1.5rem;
+        }
+
+        .progress-bar {
+            height: 8px;
+            background: rgba(0,0,0,0.05);
+            border-radius: 4px;
+            margin: 1rem 0;
+            overflow: hidden;
+        }
+
+        .progress {
+            width: 78%;
+            height: 100%;
+            background: linear-gradient(90deg, var(--blue), var(--pink));
+            transition: width 0.5s;
+        }
+
+        .key-value {
+            display: flex;
+            justify-content: space-between;
+            margin: 0.8rem 0;
+            color: #666;
+        }
+
+        .key-value span:last-child {
+            font-weight: 500;
+            color: #444;
+        }
+
+        .cta {
+            display: block;
+            width: 100%;
+            padding: 1rem;
+            border: none;
+            background: var(--pink);
+            color: white;
+            font-weight: 500;
+            cursor: pointer;
+            transition: opacity 0.3s;
+        }
+
+        .cta:hover {
+            opacity: 0.9;
+        }
+
+        .watermark {
+            position: fixed;
+            bottom: 1rem;
+            right: 1rem;
+            color: var(--blue);
+            opacity: 0.3;
+            font-size: 0.8em;
+        }
+    </style>
+</head>
+<body>
+    <div class="id-card">
+        <div class="header">
+            <h2>PARTNER PROFILE</h2>
+            <div class="avatar-pair">
+                <img src="https://s21.ax1x.com/2025/02/03/pEZgsfS.png" 
+                     alt="Endlich" 
+                     class="avatar">
+                <img src="https://s21.ax1x.com/2025/02/11/pEnccA1.jpg" 
+                     alt="Ahtohallan" 
+                     class="avatar">
+            </div>
+        </div>
+
+        <div class="stats">
+            <div class="key-value">
+                <span>双方名称</span>
+                <span>Endlich & Ahtohallan</span>
+            </div>
+            <div class="key-value">
+                <span>信任指数</span>
+                <span>✦✦✦✦✧</span>
+            </div>
+            <div class="progress-bar">
+                <div class="progress"></div>
+            </div>
+            <div class="key-value">
+                <span>语音频道</span>
+                <span>待解锁</span>
+            </div>
+        </div>
+
+        <button class="cta" onclick="upgrade()">升级为永久拍档</button>
+    </div>
+
+    <div class="watermark">#E&A-SYSTEM</div>
+
+    <script>
+        function upgrade() {
+            const confirm = window.confirm('⚠️ 该操作不可逆\n确认升级为永久拍档？');
+            
+            if(confirm) {
+                const code = prompt('输入验证暗号（提示：爱英文）：');
+                if(code && code.toLowerCase() === 'love') {
+                    alert('✅ 协议生效！已开启专属频道\nEndlich说：\n"我喜欢你"');
+                } else {
+                    alert('❌ 验证失败，请保持当前状态');
+                }
+            }
+        }
+
+        // 进度条动画
+        document.querySelector('.progress').style.width = '78%';
+    </script>
+</body>
+</html>
